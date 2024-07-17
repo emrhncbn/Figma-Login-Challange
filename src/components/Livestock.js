@@ -4,8 +4,24 @@ import Addcattle from "./Addcattle";
 import { useState } from "react";
 
 const Livestock = () => {
-  const [showAddFarm, setShowAddFarm] = useState(false);
-  const [showAddCattle, setShowAddCattle] = useState(false);
+  const [showAddFarm, setShowAddFarm] = useState(false)
+  const [showAddCattle, setShowAddCattle] = useState(false)
+
+  const openAddFarmModal = () => {
+    setShowAddFarm(true)
+  }
+
+  const closeAddFarmModal = () => {
+    setShowAddFarm(false)
+  }
+
+  const openAddCattleModal = () => {
+    setShowAddCattle(true)
+  }
+
+  const closeAddCattleModal = () => {
+    setShowAddCattle(false)
+  }
 
   return (
     <div className="bg-[#36925afb] min-h-screen p-5 flex">
@@ -20,24 +36,27 @@ const Livestock = () => {
           <p className="text-white mb-5">Farm Owner</p>
         </div>
         <ul className="list-none p-0 mb-5 w-full">
-          <Link to="/farmanalytics">
-            <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
+            <Link to="/farmanalytics" >
+          <li
+            className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
               Farm Analytics
-            </li>
-          </Link>
-          <Link to="/livestock">
-            <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
+          </li>
+            </Link>
+            <Link to="/livestock">
+          <li
+             className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
               Livestock
-            </li>
-          </Link>
-          <Link to="/dashboard">
-            <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
+          </li>
+            </Link>
+            <Link to="/dashboard">
+          <li
+             className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
               Dashboard
-            </li>
-          </Link>
+          </li>
+            </Link>
         </ul>
         <button
-          onClick={() => setShowAddFarm(true)}
+          onClick={openAddFarmModal}
           className="bg-white text-[#36925afb] w-[150px] h-[50px] text-xl rounded-md font-bold mt-40"
         >
           + Add Farm
@@ -45,13 +64,13 @@ const Livestock = () => {
       </div>
       <div className="bg-white p-5 ml-5 w-4/5 rounded-lg relative">
         {showAddFarm && (
-          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
-            <Addfarm onClose={() => setShowAddFarm(false)} />
+          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
+            <Addfarm onClose={closeAddFarmModal} />
           </div>
         )}
         {showAddCattle && (
-          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
-            <Addcattle onClose={() => setShowAddCattle(false)} />
+          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
+            <Addcattle onClose={closeAddCattleModal} />
           </div>
         )}
         <div className="flex justify-between items-start">
@@ -62,7 +81,7 @@ const Livestock = () => {
                 View Live
               </button>
               <button
-                onClick={() => setShowAddCattle(true)}
+                onClick={openAddCattleModal}
                 className="bg-[#36925afb] text-white w-[150px] h-[50px] text-xl rounded-md font-bold"
               >
                 + Add Cattle

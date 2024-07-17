@@ -38,8 +38,8 @@ const Addcrop = ({onClose}) => {
 
       <input
         className="w-[200px] h-[50px] p-2 border border-gray-300 rounded-md"
-        type="image"
-        alt="Add Image"
+        type="text"
+        alt="Add Image URL"
         placeholder="Add Image"
         value={image}
         onChange={(e) => setImage(e.target.value)}

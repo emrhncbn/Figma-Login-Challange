@@ -5,15 +5,22 @@ const Addfarm = ({ onClose }) => {
   const [farmSize, setFarmSize] = useState("")
   const [cropType, setCropType] = useState("")
   const [image, setImage] = useState("")
-  
+
   const handleSubmit = () => {
     onClose()
+  }
+
+  // Tarayıcı ortamında çalıştığından emin olmak için window objesini kullan
+  const handleClickBack = () => {
+    if (typeof window !== 'undefined') {
+      onClose()
+    }
   }
 
   return (
     <div className="relative flex flex-col items-center justify-center space-y-4 w-[850px] h-[700px] bg-white">
       <button
-        onClick={onClose}
+        onClick={handleClickBack}
         className="absolute top-4 left-4 bg-white text-[#36925afb] w-[100px] h-[40px] text-xl rounded-md font-bold border-2 border-[#36925afb]"
       >
         BACK

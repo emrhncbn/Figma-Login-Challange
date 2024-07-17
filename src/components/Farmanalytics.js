@@ -1,15 +1,25 @@
-import { useState } from "react"
-import Addfarm from "./Addfarm"
-import Addcrop from "./Addcrop"
+import { useState } from "react";
+import Addfarm from "./Addfarm";
+import Addcrop from "./Addcrop";
 import { Link } from "react-router-dom";
 
-
 const Farmanalytics = () => {
-  const [showAddFarm, setShowAddFarm] = useState(false)
-  const [showAddCrop, setShowAddCrop] = useState(false)
+  const [showAddFarm, setShowAddFarm] = useState(false);
+  const [showAddCrop, setShowAddCrop] = useState(false);
+
+  // window nesnesini kullanarak tarayıcı özel özelliklere erişim sağlıyor
+  const handleClickOutside = (e) => {
+    if (e.target === window) {
+      setShowAddFarm(false)
+      setShowAddCrop(false)
+    }
+  }
 
   return (
-    <div className="bg-[#36925afb] min-h-screen p-5 flex">
+    <div
+      className="bg-[#36925afb] min-h-screen p-5 flex"
+      onClick={handleClickOutside}
+    >
       <div className="flex flex-col items-center w-1/5">
         <div className="flex flex-col items-center mb-5">
           <img
@@ -21,21 +31,21 @@ const Farmanalytics = () => {
           <p className="text-white mb-5">Farm Owner</p>
         </div>
         <ul className="list-none p-0 mb-5 w-full">
-          <Link to="/farmanalytics">
+            <Link to="/farmanalytics">
           <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
             Farm Analytics
           </li>
-          </Link>
-          <Link to="/livestock">
+            </Link>
+            <Link to="/livestock">
           <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
             Livestock
           </li>
-          </Link>
-          <Link to="/dashboard">
+            </Link>
+            <Link to="/dashboard">
           <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
             Dashboard
           </li>
-          </Link>
+            </Link>
         </ul>
         <button
           onClick={() => setShowAddFarm(true)}
@@ -123,4 +133,4 @@ const Farmanalytics = () => {
   )
 }
 
-export default Farmanalytics;
+export default Farmanalytics

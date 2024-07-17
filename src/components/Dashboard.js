@@ -3,7 +3,11 @@ import Addfarm from "./Addfarm";
 import { useState } from "react";
 
 const Dashboard = () => {
-  const [showAddFarm, setShowAddFarm] = useState(false);
+  const [showAddFarm, setShowAddFarm] = useState(false)
+
+  const handleAddFarmClick = () => {
+    setShowAddFarm(true)
+  }
 
   return (
     <div className="bg-[#36925afb] min-h-screen p-5 flex">
@@ -18,23 +22,23 @@ const Dashboard = () => {
           <p className="text-white mb-5">Farm Owner</p>
         </div>
         <ul className="list-none p-0 mb-5 w-full">
-            <Link to="/farmanalytics" >
-          <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
+          <Link to="/farmanalytics">
+            <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
               Farm Analytics
-          </li>
-            </Link>
-            <Link to="/livestock" >
-          <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
+            </li>
+          </Link>
+          <Link to="/livestock">
+            <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
               Livestock
-          </li>
-            </Link>
-            <Link to="/dashboard" >
-          <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
+            </li>
+          </Link>
+          <Link to="/dashboard">
+            <li className="text-white text-2xl font-bold w-full p-2 text-center cursor-pointer hover:bg-white hover:text-[#36925afb]">
               Dashboard
-          </li>
-            </Link>
+            </li>
+          </Link>
         </ul>
-        <button onClick={() => setShowAddFarm(true)} className="bg-white text-[#36925afb] w-[150px] h-[50px] text-xl rounded-md font-bold mt-40">
+        <button onClick={handleAddFarmClick} className="bg-white text-[#36925afb] w-[150px] h-[50px] text-xl rounded-md font-bold mt-40">
           + Add Farm
         </button>
       </div>
@@ -125,7 +129,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
